@@ -1,0 +1,83 @@
+Microsoft Windows [Version 10.0.22000.469]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\udacity>ssh -i "keypem2.pem" ec2-user@ec2-34-215-167-244.us-west-2.compute.amazonaws.com
+The authenticity of host 'ec2-34-215-167-244.us-west-2.compute.amazonaws.com (34.215.167.244)' can't be established.
+ECDSA key fingerprint is SHA256:qDSAMffq4mKhf06e7k8lw2/oNRrprI1F8/RvOpweYVU.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'ec2-34-215-167-244.us-west-2.compute.amazonaws.com,34.215.167.244' (ECDSA) to the list of known hosts.
+Last login: Thu Feb 15 13:33:01 2024 from ec2-18-237-140-165.us-west-2.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2
+  ~~  \_#####\
+  ~~     \###|       AL2 End of Life is 2025-06-30.
+  ~~       \#/ ___
+   ~~       V~' '->
+    ~~~         /    A newer version of Amazon Linux is available!
+      ~~._.   _/
+         _/ _/       Amazon Linux 2023, GA and supported until 2028-03-15.
+       _/m/'           https://aws.amazon.com/linux/amazon-linux-2023/
+
+4 package(s) needed for security, out of 8 available
+Run "sudo yum update" to apply all updates.
+[ec2-user@ip-10-2-11-125 ~]$ mysql -u admin -h replica-rds.c9f3nwxhorci.us-west-2.rds.amazonaws.com -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 36
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| project1           |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+MySQL [(none)]> use project1;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [project1]> select * from Subject;
+ERROR 1146 (42S02): Table 'project1.Subject' doesn't exist
+MySQL [project1]> select * from Suject;
++----+-------+
+| Id | Name  |
++----+-------+
+|  1 | Math  |
+|  2 | Music |
++----+-------+
+2 rows in set (0.00 sec)
+
+MySQL [project1]> INSERT INTO Suject(Id, Name) VALUES (3, 'English'), (4, 'History');
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [project1]> INSERT INTO Suject(Id, Name) VALUES (3, 'English'), (4, 'History');
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    10
+Current database: project1
+
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MySQL [project1]> select * from Suject;
++----+---------+
+| Id | Name    |
++----+---------+
+|  1 | Math    |
+|  2 | Music   |
+|  3 | English |
+|  4 | History |
++----+---------+
+4 rows in set (0.00 sec)
+
+MySQL [project1]>

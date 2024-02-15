@@ -1,0 +1,64 @@
+Last login: Thu Feb 15 12:59:41 2024 from ec2-18-206-107-28.compute-1.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2
+  ~~  \_#####\
+  ~~     \###|       AL2 End of Life is 2025-06-30.
+  ~~       \#/ ___
+   ~~       V~' '->
+    ~~~         /    A newer version of Amazon Linux is available!
+      ~~._.   _/
+         _/ _/       Amazon Linux 2023, GA and supported until 2028-03-15.
+       _/m/'           https://aws.amazon.com/linux/amazon-linux-2023/
+
+4 package(s) needed for security, out of 8 available
+Run "sudo yum update" to apply all updates.
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+[ec2-user@ip-10-1-10-26 ~]$ mysql -u admin -h primary-rds.cx3mithxpbpv.us-east-1.rds.amazonaws.com -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 45
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> CREATE DATABASE project1
+    -> 
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+
+MySQL [(none)]> Show Databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| project1           |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+MySQL [(none)]>use project1;
+ERROR 1049 (42000): Unknown database 'pr?oject1'
+MySQL [(none)]> use project1;
+Database changed
+MySQL [project1]> CREATE TABLE Suject(Id INT PRIMARY KEY, Name NVARCHAR(50) NOT NULL DEFAULT '');
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+MySQL [project1]> INSERT INTO Suject(Id, Name) VALUES (1, 'Math'), (2, 'Music');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MySQL [project1]> Select * From Suject;
++----+-------+
+| Id | Name  |
++----+-------+
+|  1 | Math  |
+|  2 | Music |
++----+-------+
+2 rows in set (0.00 sec)
+
+MySQL [project1]> 
+

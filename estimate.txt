@@ -1,0 +1,22 @@
+Write a paragraph or two describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database in terms of:
+
+1. Minimum RTO for a single AZ outage 
+The minimum RTO for a single AZ outage is typically under 2 minute for most AWS database services that support Multi-AZ deployments.
+
+Total time: 2 minutes
+
+2. Minimum RTO for a single region outage
+
+The minimum RTO for a single region outage is about a few minutes to a 60 minutes.
+
+Total time: 60 minutes 
+
+3. Minimum RPO for a single AZ outage
+The minimum RPO for a single AZ outage under 1 second for most AWS database services that support Multi-AZ deployments, as they use synchronous or physical replication to a second AZ.
+
+Total time: under 1 second
+       
+4. Minimum RPO for a single region outage 
+The minimum RPO could range from 10 to 40 minutes, though some technologies offer near-zero RPO capabilities.
+
+Total time: 40 minutes
