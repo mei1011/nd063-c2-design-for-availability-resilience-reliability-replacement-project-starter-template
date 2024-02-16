@@ -1,22 +1,17 @@
 Write a paragraph or two describing the achievable Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for this Multi-AZ, multi-region database in terms of:
-
+ 
 1. Minimum RTO for a single AZ outage 
-The minimum RTO for a single AZ outage is typically under 2 minute for most AWS database services that support Multi-AZ deployments.
-
+The minimum RTO for a single AZ outage is within 1 to 2 minutes. This is because the database can automatically fail over to another AZ within the same region, without losing data or requiring manual intervention.
+ 
 Total time: 2 minutes
-
 2. Minimum RTO for a single region outage
-
-The minimum RTO for a single region outage is about a few minutes to a 60 minutes.
-
-Total time: 60 minutes 
-
+ 
+The minimum RTO for a single region outage is take around 30 minutes to 1 hour, depending on the size of the database, take around 30 minutes to 1 hour, depending on the size of the database, the number of changes made since the last backup, the workload levels, data size, and network latency.
+ 
 3. Minimum RPO for a single AZ outage
-The minimum RPO for a single AZ outage under 1 second for most AWS database services that support Multi-AZ deployments, as they use synchronous or physical replication to a second AZ.
-
-Total time: under 1 second
-       
+The minimum RPO for a single AZ outage is effectively zero. Data changes preceding the failure or disaster by at least this time period are preserved by recovery processing. Zero is a valid value and is equivalent to a "zero data loss" requirement.
+ref: https://www.ibm.com/docs/en/i/7.2?topic=criteria-recovery-point-objective-rpo
+ 
 4. Minimum RPO for a single region outage 
-The minimum RPO could range from 10 to 40 minutes, though some technologies offer near-zero RPO capabilities.
-
-Total time: 40 minutes
+The minimum RPO for a single region outage is typically a few seconds to a few minutes. The time it takes to restore from these backups can vary based on factors such as the size of the database, the number of changes made since the last backup, and the workload on the database. the total time RPO will be based on how often data is backed up around 30 minutes If we set up a backup every 30 minutes. 
+Total time: 30 minutes
